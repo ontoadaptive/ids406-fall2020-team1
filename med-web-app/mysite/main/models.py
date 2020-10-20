@@ -21,7 +21,10 @@ class Patient(models.Model):
         choices = GENDER_CHOICES
         )
 
-    birth_date = models.DateField(auto_now_add = True, null = True)
+    birth_date = models.DateField(null = True) #doesn't show up 
+
+    def __str__(self):
+        return self.first_name
 
 class Medication(models.Model):
     FORM_CHOICES = (
@@ -31,11 +34,15 @@ class Medication(models.Model):
         ('Capsule', 'Capsule')
         )
 
-    identifier =  models.AutoField(primary_key = True) #should we do it this way 
+    identifier =  models.AutoField(primary_key = True) 
     name = models.CharField(max_length = 200, null = True )
-    expiration_date =  models.DateField(auto_now_add = True, null = True)
+    expiration_date =  models.DateField(null = True)
     form =  models.CharField(max_length = 10, null = True, choices=FORM_CHOICES)
-    amount = models.CharField(max_length = 3, null = True) # how many of form do we have?
+    amount = models.CharField(max_length = 20, null = True) # how many of form do we have?
+    #add dosage per form? what is the proper term
     
     patient = models.ManyToManyField(Patient)
+    
+    def __str__(self):
+        return self.name
     
