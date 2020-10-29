@@ -1,4 +1,4 @@
-"""mysite URL Configuration
+"""backend URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -13,11 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
-from . import views
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework import routers
+from main import views
 
-app_name = "main"
+router = routers.DefaultRouter()
+router.register(r'patient', views.PatientView, 'patient')
 
 urlpatterns = [
-    path('', views.homepage, name ="homepage"), #points to homepage function in views
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls))
 ]
