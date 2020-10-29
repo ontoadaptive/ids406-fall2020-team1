@@ -37,9 +37,30 @@
       "patient": "456"
     }
   ],
-  "medications": {
-    "id": "8499820",
+  "medications": [
+    {
+    "id": "1",
     "name": "Losartan",
-    "dose": "50 mg"
-  }
+    "dose": "50 mg",
+    "days": "MWF",
+    "times": "9:00AM",
+    "amount": "30"
+    },
+    {
+    "id": "2",
+    "name": "Aspirin",
+    "dose": "325 mg",
+    "days": "MTWF",
+    "times": "7:30AM",
+    "amount": "60"
+    },
+    {
+      "id": "3",
+      "name": "Exemestane",
+      "dose": "25 mg",
+      "days": "MTWFS",
+      "times": "9:00AM",
+      "amount": "15"
+    }
+  ]
 }

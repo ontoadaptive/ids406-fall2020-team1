@@ -6,13 +6,10 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        Blood Pressure - Web App Example
+        Demo v4
       </header>
-      <br />
-      <PatientsViewer />
-      <br />
-      <MedicationsViewer />
-      <br />
+      <MedicationsViewer/>
+      <br></br>
       <ObservationsViewer />
     </div>
   );
