@@ -1,0 +1,66 @@
+{
+  "patients": [
+    {
+      "id": "123",
+      "name": "Bob Sample",
+      "address": "1 Cool St. Chicago, Illinois 60606"
+    },
+    {
+      "id": "456",
+      "name": "Katie Friend",
+      "address": "5 Awesome Rd. Cleveland, Ohio 44118"
+    }
+  ],
+  "observations": [
+    {
+      "id": "19876",
+      "type": "blood-pressure",
+      "value": "134/76",
+      "patient": "123"
+    },
+    {
+      "id": "87234",
+      "type": "blood-pressure",
+      "value": "127/72",
+      "patient": "456"
+    },
+    {
+      "id": "23489",
+      "type": "blood-pressure",
+      "value": "145/85",
+      "patient": "123"
+    },
+    {
+      "id": "82937",
+      "type": "blood-pressure",
+      "value": "155/84",
+      "patient": "456"
+    }
+  ],
+  "medications": [
+    {
+    "id": "1",
+    "name": "Losartan",
+    "dose": "50 mg",
+    "days": "MWF",
+    "times": "9:00AM",
+    "amount": "30"
+    },
+    {
+    "id": "2",
+    "name": "Aspirin",
+    "dose": "325 mg",
+    "days": "MTWF",
+    "times": "7:30AM",
+    "amount": "60"
+    },
+    {
+      "id": "3",
+      "name": "Exemestane",
+      "dose": "25 mg",
+      "days": "MTWFS",
+      "times": "9:00AM",
+      "amount": "15"
+    }
+  ]
+}
