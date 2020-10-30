@@ -31,11 +31,11 @@ class Medication(models.Model):
     id = models.AutoField(primary_key = True)
     name = models.CharField(max_length=20, null = True)
     dose = models.CharField(max_length=20, null = True)
-    days = models.CharField(max_length=20, null = True)
-    times = models.CharField(max_length=20, null = True)
-    amount = models.CharField(max_length=20, null = True)
+    days = models.CharField(max_length=20, null = True) #possibly change this to choices
+    times = models.CharField(max_length=20, null = True) #change this to time field
+    amount = models.CharField(max_length=20, null = True) 
 
-    patient = models.ForeignKey('patient', on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     #
     def __str__(self):
         return self.name
@@ -44,4 +44,4 @@ class Timeline(models.Model):
     id = models.AutoField(primary_key = True)
     datetime = models.DateTimeField(null = True)
 
-    #patient = models.ForeignKey('patient', on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, default = "" ,on_delete=models.CASCADE)

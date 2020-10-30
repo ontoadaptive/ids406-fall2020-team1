@@ -20,7 +20,8 @@ from main import views
 
 router = routers.DefaultRouter()
 router.register(r'patient', views.PatientView, 'patient')
-router.register(r'medication', views.MedicationView, 'patient')
+router.register(r'medication', views.MedicationView, 'medication')
+router.register(r'timeline', views.TimelineView, 'timeline')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
