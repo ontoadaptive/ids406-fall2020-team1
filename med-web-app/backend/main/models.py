@@ -39,3 +39,9 @@ class Medication(models.Model):
     #
     def __str__(self):
         return self.name
+
+class Timeline(models.Model):
+    id = models.AutoField(primary_key = True)
+    datetime = models.DateTimeField(null = True)
+
+    #patient = models.ForeignKey('patient', on_delete=models.CASCADE)
