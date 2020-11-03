@@ -1,19 +1,32 @@
 import React from 'react';
 import './App.css';
-import { MedicationsViewer, ObservationsViewer, PatientsViewer } from "./components";
+import { AppHeader } from "./components";
+import { Medications, Observations, Patients } from "./pages";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Content } from "carbon-components-react/lib/components/UIShell";
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        Blood Pressure - Web App Example
-      </header>
-      <br />
-      <PatientsViewer />
-      <br />
-      <MedicationsViewer />
-      <br />
-      <ObservationsViewer />
+      <AppHeader />
+      <Content>
+        <Router>
+          <Switch>
+            <Route path="/medications">
+              <Medications />
+            </Route>
+            <Route path="/observations">
+              <Observations />
+            </Route>
+            <Route path="/" exact>
+              <Patients />
+            </Route>
+            <Route path="*">
+              <Patients />
+            </Route>
+          </Switch>
+        </Router>
+      </Content>
     </div>
   );
 }
