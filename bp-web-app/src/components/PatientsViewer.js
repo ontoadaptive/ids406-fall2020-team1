@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "../axios/instance";
+import { 
+  StructuredListWrapper,
+  StructuredListHead,
+  StructuredListBody,
+  StructuredListRow,
+  StructuredListCell
+} from 'carbon-components-react';
 
 const PatientsViewer = () => {
   const [patientsData, setPatientsData] = useState([]);
@@ -17,14 +24,36 @@ const PatientsViewer = () => {
 
   return (
     <div>
-      <p>Patient List</p>
-      <p>{patientsData.map((patient) => 
-        <ul>
-          <li>{patient.id}</li>
-          <li>{patient.name}</li>
-          <li>{patient.address}</li>
-        </ul>
-      )}</p>
+      <StructuredListWrapper ariaLabel="Patients Structured List">
+        <StructuredListHead>
+          <StructuredListRow head tabIndex={0}>
+            <StructuredListCell head>
+              Id
+            </StructuredListCell>
+            <StructuredListCell head>
+              Name
+            </StructuredListCell>
+            <StructuredListCell head>
+              Address
+            </StructuredListCell>
+          </StructuredListRow>
+        </StructuredListHead>
+        <StructuredListBody>
+          {patientsData.map((patient) =>
+            <StructuredListRow tabIndex={0}>
+              <StructuredListCell>
+                {patient.id}
+              </StructuredListCell>
+              <StructuredListCell>
+                {patient.name}
+              </StructuredListCell>
+              <StructuredListCell>
+                {patient.address}
+              </StructuredListCell>
+            </StructuredListRow>
+          )}
+        </StructuredListBody>
+      </StructuredListWrapper>
     </div>
   );
 };
