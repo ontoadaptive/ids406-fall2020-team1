@@ -1,0 +1,25 @@
+# output settings
+# meaning: Write any generated data points to the console.
+output:
+  destination: file
+
+data:
+  # header settings
+  # meaning: Set the `header.user-id` property of the data point to the username `joe`. 
+  header:
+    user-id: mary
+
+  # measure generation settings
+  measure-generation-requests:
+  
+  # meaning: A measure generator called `body-weight` should create a year's worth of data
+  # for 2014, with data points 24 hours apart, or about 365 data points in total. The 
+  # weight should trend from 55kg at the beginning of the year to 60kg at the end of the year.
+  - generator: heart-rate
+    trends:
+      ? rate-in-beats-per-minute
+      : start-value: 80
+        end-value: 80
+        minimum-value: 60
+        maximum-value: 200
+        standard-deviation: 10
