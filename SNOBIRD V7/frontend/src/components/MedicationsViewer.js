@@ -15,7 +15,7 @@ const {
 
 const MedicationsViewer = () => {
   const [medicationsData, setMedicationsData] = useState([]);
-
+ 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/medication/')
     .then(response => {
@@ -83,13 +83,7 @@ const MedicationsViewer = () => {
           </Table>
         </TableContainer>
       )}
-    />
-    // <div style={{ backgroundColor: "LightGray", display: "block", marginRight: 'auto', marginLeft: 'auto', width: '300px' }} >
-    //   <u>Medication Information</u>
-    //   <p><strong>Id: </strong>{medicationsData.id}</p>
-    //   <p><strong>Name: </strong>{medicationsData.name}</p>
-    //   <p><strong>Dose: </strong>{medicationsData.dose}</p>
-    // </div>
+    />   
   );
 };
 

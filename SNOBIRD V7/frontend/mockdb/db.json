@@ -62,5 +62,28 @@
       "times": "9:00AM",
       "amount": "15"
     }
-  ]
+  ],
+  "bp": [
+      { 
+        "header": {
+          "id":"c342ab51-0a84-4a2a-818a-9f4a9e785dc6",
+          "creation_date_time":"2014-01-02T10:45:49Z",
+          "acquisition_provenance":{
+            "source_name":"generator",
+            "source_creation_date_time":"2014-01-02T10:44:49Z",
+            "modality":"sensed"},
+          "user_id":"mary",
+          "schema_id":{
+            "namespace":"omh",
+            "name":"heart-rate",
+            "version":"1.0"}},
+        "body":{
+          "effective_time_frame":{
+            "date_time":"2014-01-02T10:44:49Z"},
+          "heart_rate":{
+            "unit":"beats/min",
+            "value":74.5229067273638}},
+        "id":"c342ab51-0a84-4a2a-818a-9f4a9e785dc6"
+      }
+         ]
 }

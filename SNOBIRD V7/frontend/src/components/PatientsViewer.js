@@ -16,16 +16,17 @@ const PatientsViewer = () => {
   }, []);
 
   return (
-    <div>
-      <p>Patient List</p>
-      <p>{patientsData.map((patient) => 
-        <ul>
-          <li>{patient.id}</li>
-          <li>{patient.name}</li>
-          <li>{patient.address}</li>
-        </ul>
-      )}</p>
-    </div>
+    // <div>
+    //   <p>Patient List</p>
+    //   <p>{patientsData.map((patient) => 
+    //     <ul>
+    //       <li>{patient.id}</li>
+    //       <li>{patient.name}</li>
+    //       <li>{patient.address}</li>
+    //     </ul>
+    //   )}</p>
+    // </div>
+    <h1>Harry and Mary Views</h1>
   );
 };
 
