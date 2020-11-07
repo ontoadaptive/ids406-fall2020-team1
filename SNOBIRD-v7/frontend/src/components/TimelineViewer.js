@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axious from "../axios/instance";
+import axios from "../axios/instance";
 
 const TimelineViewer = () => {
     const [timelineData, setTimelineData] = useState([]);
 
     useEffect(() => {
-        axious.get('/bp')
+        axios.get('/bp')
         .then (response => {
             const data = response.data;
             setTimelineData(data)
@@ -14,7 +14,19 @@ const TimelineViewer = () => {
             console.log("Error getting timeline data")
         });
     }, []);
-}
+
+    return (
+        <div>
+            <p>output.json info goes here</p>
+            {/* {timelineData.map((bp) =>
+                [<p>{bp.header}</p>]
+            )} */}
+        </div>
+    );
+
+
+};
+
 
 
 export default TimelineViewer;

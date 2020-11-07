@@ -13,10 +13,15 @@ const AppHeader = () => (
             SNOBIRDv7
         </HeaderName>
         <HeaderNavigation aria-label = "SNOBIRD Navigation">
-                <HeaderMenuItem id = "patients-menu-items" href="/medications">
-                Medication
+                <HeaderMenuItem id = "medications-menu-items" href="/medications">
+                    Medication
                 </HeaderMenuItem>
-                
+                <HeaderMenuItem id = "patient-menu-items" href = "/patients">
+                    Patients
+                </HeaderMenuItem>
+                <HeaderMenuItem id = "timeline-menu-items" href="/timeline">
+                    Timeline
+                </HeaderMenuItem>
         </HeaderNavigation>
     </Header>
 );

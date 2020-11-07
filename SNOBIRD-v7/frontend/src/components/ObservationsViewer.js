@@ -48,6 +48,7 @@ const ObservationsViewer = () => {
 
   return (
     <DataTable
+      isSortable = {true}
       rows={observationsData}
       headers={headers}
       render={({ rows, headers, getHeaderProps }) => (

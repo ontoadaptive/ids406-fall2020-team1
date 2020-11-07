@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { AppHeader} from "./components";
-import { Medications, Timeline } from "./pages";
+import { Medications, Timeline, Patient } from "./pages";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { Content } from "carbon-components-react/lib/components/UIShell";
 
@@ -22,7 +22,11 @@ const App = () => {
             <Route path="/timeline/">
               <Timeline />
             </Route>
+            <Route pathh="/patient/">
+              <Patient/>
+            </Route>
             <Route path = "*">
+              <Timeline/>
             </Route>
           </Switch>
         </Router>

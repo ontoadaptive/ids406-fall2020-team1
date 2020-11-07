@@ -1,5 +1,5 @@
 import React from "react";
-import { MedicationsViewer, MedicationForm } from '../components';
+import { MedicationsViewer, MedicationForm, MedicationNotification } from '../components';
 
 const Medications = () => {
     return (
@@ -7,6 +7,8 @@ const Medications = () => {
         <MedicationsViewer />
         <br/>
         <MedicationForm/>
+        <br/>
+        <MedicationNotification/>
         </>
     );
 };
