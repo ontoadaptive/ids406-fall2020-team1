@@ -13,19 +13,40 @@ const {
   TableHeader
 } = DataTable;
 
+const Beta = true;
+const apiURL = "http://127.0.0.1:8000/api/"
+console.log(process.env)
 const MedicationsViewer = () => {
-  const [medicationsData, setMedicationsData] = useState([]);
- 
+  const [medicationsData, setMedicationsData] = useState([]); //locla localhost
+  
+
+
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/medication/')
-    .then(response => {
-      const data = response.data;
-      setMedicationsData(data)
-    })
-    .catch(error => {
-      console.log("Error getting medication data")
-    });
+    if (Beta) {
+      //axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
+      console.log(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
+      axios.get('http://127.0.0.1:8000/api/medication/')
+      .then(response => {
+        const data = response.data;
+        setMedicationsData(data)
+      })
+      .catch(error => {
+        console.log("Error getting medication data")
+      });
+    }
+
+    else {
+      axios.get('/medications')  
+      .then(response => {
+        const data = response.data;
+        setMedicationsData(data)
+      })
+      .catch(error => {
+        console.log("Error getting medication data")
+      });
+    }
   }, []);
+
   
   const headers = [
     {

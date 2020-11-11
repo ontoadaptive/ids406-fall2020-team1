@@ -22,7 +22,7 @@ const App = () => {
             <Route path="/timeline/">
               <Timeline />
             </Route>
-            <Route pathh="/patient/">
+            <Route path="/patient/">
               <Patient/>
             </Route>
             <Route path = "*">

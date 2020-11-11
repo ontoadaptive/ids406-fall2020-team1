@@ -14,4 +14,4 @@ class MedicationView(viewsets.ModelViewSet):
 
 class TimelineView(viewsets.ModelViewSet):
     serializer_class = TimelineSerializer
-    queryset = Medication.objects.all()
+    queryset = Timeline.objects.all()
