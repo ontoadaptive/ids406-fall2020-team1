@@ -16,4 +16,4 @@ class MedicationSerializer(serializers.ModelSerializer):
 class TimelineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Timeline
-        fields = ('id','datetime','patient')
+        fields = ('id','datetime','patient', 'heart_rate', 'unit')
