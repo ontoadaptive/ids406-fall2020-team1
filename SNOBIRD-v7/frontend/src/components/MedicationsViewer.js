@@ -14,18 +14,14 @@ const {
 } = DataTable;
 
 const Beta = true;
-const apiURL = "http://127.0.0.1:8000/api/"
-console.log(process.env)
 const MedicationsViewer = () => {
   const [medicationsData, setMedicationsData] = useState([]); //locla localhost
   
-
-
   useEffect(() => {
     if (Beta) {
-      //axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
-      console.log(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
-      axios.get('http://127.0.0.1:8000/api/medication/')
+      axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
+      //console.log(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
+      //axios.get('http://127.0.0.1:8000/api/medication/')
       .then(response => {
         const data = response.data;
         setMedicationsData(data)
@@ -95,6 +91,7 @@ const MedicationsViewer = () => {
             <TableBody>
               {rows.map(row => (
                 <TableRow key={row.id}>
+                  {console.log(row)}
                   {row.cells.map(cell => (
                     <TableCell key={cell.id}>{cell.value}</TableCell>
                   ))}
