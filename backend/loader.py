@@ -85,8 +85,9 @@ def load(file_path):
 
 
 def main():
-    # 1. transaction script
     source_file_path = "../data/test-small.json"
+ 
+    # 1. transaction script
     load(source_file_path)
 
     # 2. OOP

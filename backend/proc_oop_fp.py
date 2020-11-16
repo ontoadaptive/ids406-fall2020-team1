@@ -86,8 +86,9 @@ def main(bps, bp_risks):
 
 
 if __name__ == "__main__":
-    # input
+    # input (i.e., systolic)
     bps = [120, 118, 119, 125, 130, 135, 140, 141, 142, 130]
+
     # expected
     # - 0-indexed
     bp_risks = {6: 140, 7: 141, 8: 142}

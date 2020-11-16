@@ -6,7 +6,7 @@ help:
 	@echo ""
 	@echo make run-loader
 	@echo make run-add-beta-bps
-	@echo make run-proc-oop-fps
+	@echo make run-proc-oop-fp
 
 makemigrations:
 	python3 manage.py makemigrations
