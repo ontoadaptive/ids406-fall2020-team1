@@ -1,12 +1,15 @@
 # add_beta_bps.py
+
+# set up django shell like environment with dependencies
 import os
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
-import django
 
+import django
 django.setup()
 
+from django.utils import timezone
 from datetime import datetime
+
 from snobird_v7.models import Observation
 
 
@@ -29,7 +32,10 @@ def create_observations():
 
     for id in ids:
         name = "obs-{0}".format(id)
-        o = Observation(id=id, name=name, time_stamp=datetime.now())
+        # NAA
+        # - https://stackoverflow.com/questions/18622007/runtimewarning-datetimefield-received-a-naive-datetime
+        # o = Observation(id=id, name=name, time_stamp=datetime.now())
+        o = Observation(id=id, name=name, time_stamp=datetime.now(tz=timezone.utc))
         o.save()
 
 
