@@ -43,14 +43,14 @@
     },
     {
       "id": "58958",
-      "type": "blood-pressure",
-      "value": "134/94",
+      "type": "temperature",
+      "value": "98.6",
       "patient": "456"
     },
     {
       "id": "98130",
-      "type": "blood-pressure",
-      "value": "142/83",
+      "type": "temperature",
+      "value": "100.2",
       "patient": "456"
     }
   ],
