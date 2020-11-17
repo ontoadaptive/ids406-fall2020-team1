@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "../axios/instance";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchObservations } from "../actions/observations";
+import { getObservationsData, getObservationsIsFetching } from "../selectors";
 
 import { DataTable } from "carbon-components-react";
+import { LoadingIndicator } from "../components";
 
 const {
   TableContainer,
@@ -14,18 +18,14 @@ const {
 } = DataTable;
 
 const ObservationsViewer = () => {
-  const [observationsData, setObservationsData] = useState([]);
+  const dispatch = useDispatch();
+  const observationsData = useSelector(getObservationsData);
+
+  const isFetching = useSelector(getObservationsIsFetching);
 
   useEffect(() => {
-    axios.get('/observations')
-    .then(response => {
-      const data = response.data;
-      setObservationsData(data)
-    })
-    .catch(error => {
-      console.log("Error getting observation data")
-    });
-  }, []);
+    dispatch(fetchObservations());
+  }, [dispatch]);
 
   const headers = [
     {
@@ -47,35 +47,38 @@ const ObservationsViewer = () => {
   ];
 
   return (
-    <DataTable
-      rows={observationsData}
-      headers={headers}
-      render={({ rows, headers, getHeaderProps }) => (
-        <TableContainer title="Patient Observations">
-          <Table>
-            <TableHead>
-              <TableRow>
-                {headers.map(header => (
-                  // eslint-disable-next-line react/jsx-key
-                  <TableHeader {...getHeaderProps({ header })}>
-                    {header.header}
-                  </TableHeader>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.id}>
-                  {row.cells.map(cell => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
+    <div>
+      <LoadingIndicator active={isFetching} />
+      <DataTable
+        rows={observationsData}
+        headers={headers}
+        render={({ rows, headers, getHeaderProps }) => (
+          <TableContainer title="Patient Observations">
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {headers.map(header => (
+                    // eslint-disable-next-line react/jsx-key
+                    <TableHeader {...getHeaderProps({ header })}>
+                      {header.header}
+                    </TableHeader>
                   ))}
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      )}
-    />
+              </TableHead>
+              <TableBody>
+                {rows.map(row => (
+                  <TableRow key={row.id}>
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+      />
+    </div>
   );
 };
 
