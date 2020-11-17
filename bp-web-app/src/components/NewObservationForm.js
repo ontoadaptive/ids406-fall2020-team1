@@ -6,7 +6,7 @@ import {
   TextInput
  } from 'carbon-components-react';  
 
-const NewPatientForm = () => {
+const NewObservationForm = () => {
 
   const [id, setId] = useState("");
   const [observationType, setObservationType] = useState("");
@@ -70,11 +70,6 @@ const NewPatientForm = () => {
       </FormGroup>
       <FormGroup
         invalid={false}
-        legendText="Patient Id"
-        message={false}
-      >
-      <FormGroup
-        invalid={false}
         legendText="Observation Value"
         message={false}
       >
@@ -110,4 +105,4 @@ const NewPatientForm = () => {
   );
 };
 
-export default NewPatientForm;
+export default NewObservationForm;
