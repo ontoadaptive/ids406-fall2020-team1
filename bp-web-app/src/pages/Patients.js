@@ -1,5 +1,5 @@
 import React from "react";
-import { NewPatientForm, PatientsViewer } from "../components";
+import { PatientsViewer } from "../components";
 
 const Patients = () => {
   return (
