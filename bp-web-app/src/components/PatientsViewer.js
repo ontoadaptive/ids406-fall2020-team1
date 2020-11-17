@@ -40,7 +40,7 @@ const PatientsViewer = () => {
         </StructuredListHead>
         <StructuredListBody>
           {patientsData.map((patient) =>
-            <StructuredListRow tabIndex={0}>
+            <StructuredListRow tabIndex={1} key={patient.id}>
               <StructuredListCell>
                 {patient.id}
               </StructuredListCell>
