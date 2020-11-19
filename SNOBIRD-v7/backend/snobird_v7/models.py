@@ -47,9 +47,5 @@ class Timeline(models.Model):
     patient = models.CharField(max_length=20, null = True)
     heart_rate = models.FloatField(max_length=20, null = True)
     unit = models.CharField(max_length=20, null = True)
-    def create_timeline(datetime, patient, heart_rate, unit):
-        id = models.AutoField(primary_key = True)
-        datetime = models.DateTimeField(null = True)
-        patient = models.CharField(max_length=20, null = True)
-        heart_rate = models.FloatField(max_length=20, null = True)
-        unit = models.CharField(max_length=20, null = True)
+    
+    
