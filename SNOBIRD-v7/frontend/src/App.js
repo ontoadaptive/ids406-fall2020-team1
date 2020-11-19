@@ -22,11 +22,11 @@ const App = () => {
             <Route path="/timeline/">
               <Timeline />
             </Route>
-            <Route path="/patient/">
-              <Patient/>
+            <Route path="/patients/">
+              <Patient />
             </Route>
             <Route path = "*">
-              <Timeline/>
+              <Timeline />
             </Route>
           </Switch>
         </Router>

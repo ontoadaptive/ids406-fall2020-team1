@@ -1,10 +1,10 @@
 import React from "react";
 import { PatientsViewer } from '../components';
 
-const Timeline = () => {
+const Patient = () => {
     return (
         <PatientsViewer/>
     );
 };
 
-export default Timeline;
+export default Patient;

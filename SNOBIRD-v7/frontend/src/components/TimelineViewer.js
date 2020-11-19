@@ -12,31 +12,45 @@ const {
     TableCell,
     TableHeader
   } = DataTable;
-
+const Beta = true; 
 const TimelineViewer = () => {
     const [timelineData, setTimelineData] = useState([]);
     
     useEffect(() => {
-        axios.get('/bp')
-        .then (response => {
-            //console.log("ay", response.data);
-            const data = response.data;
-            const modifiedData = data.map((el) => {
-              return {
-                date: el.body.effective_time_frame.date_time,
-                patient: el.header.user_id,
-                heartRate: el.body.heart_rate.value,
-                unit: el.body.heart_rate.unit,
-                
-              };
+        console.log(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TIMELINE_KEY}`);
+        if (Beta) {
+            
+            axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TIMELINE_KEY}`)
+            .then(response => {
+                const data = response.data;
+                setTimelineData(data)
             })
-            console.log("modifiedData", modifiedData);
-            setTimelineData(modifiedData);
-        })
-        .catch(error => {
-            console.log("Error getting timeline data")
-        });
+            .catch(error => {
+                console.log("Error getting timeline data from API")
+            });
+        }
+        else {
+            axios.get('/bp')
+            .then (response => {
+                //console.log("ay", response.data);
+                const data = response.data;
+                const modifiedData = data.map((el) => {
+                return {
+                    datetime: el.body.effective_time_frame.date_time,
+                    patient: el.header.user_id,
+                    heart_rate: el.body.heart_rate.value,
+                    unit: el.body.heart_rate.unit,
+                    
+                };
+                })
+                console.log("modifiedData", modifiedData);
+                setTimelineData(modifiedData);
+            })
+            .catch(error => {
+                console.log("Error getting timeline data")
+            });   
         
+        }
     }, []);
 
     const headers = [

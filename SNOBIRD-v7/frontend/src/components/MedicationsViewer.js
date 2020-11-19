@@ -27,7 +27,7 @@ const MedicationsViewer = () => {
         setMedicationsData(data)
       })
       .catch(error => {
-        console.log("Error getting medication data")
+        console.log("Error getting medication data from API")
       });
     }
 
