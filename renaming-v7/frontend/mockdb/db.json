@@ -65,16 +65,25 @@
   ],
   "smartlist": [
     {
-      "user_id": "mary",
-      "bp_value": 130
+      "id": 1,
+      "datetime": "2014-01-03T05:53:33Z",
+      "patient": "Mary",
+      "heart_rate": 130,
+      "unit": "beats/min"
     },
     {
-      "user_id": "maryjoe",
-      "bp_value": 150
+      "id": 2,
+      "datetime": "2014-01-03T05:53:33Z",
+      "patient": "Harry",
+      "heart_rate": 150,
+      "unit": "beats/min"
     },
     {
-      "user_id": "mary",
-      "bp_value": 160
+      "id": 3,
+      "datetime": "2014-01-02T10:45:49Z",
+      "patient": "Mary",
+      "heart_rate": 160.743743,
+      "unit": "beats/min"
     }
   ]
 }

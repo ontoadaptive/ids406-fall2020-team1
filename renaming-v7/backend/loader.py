@@ -33,7 +33,7 @@ def load(file_path):
             target = map(source)
 
 def main():
-    source_file_path = "data/test-small.json"
+    source_file_path = "data/test.json"
     
     #debug
     delete_observations()

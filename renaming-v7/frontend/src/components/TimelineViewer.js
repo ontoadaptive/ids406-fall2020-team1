@@ -16,8 +16,8 @@ const Beta = true;
 const TimelineViewer = () => {
     const [timelineData, setTimelineData] = useState([]);
     
+    //switcher needs to be cleaned up
     useEffect(() => {
-        console.log(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TIMELINE_KEY}`);
         if (Beta) {
             axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TIMELINE_KEY}`)
             .then(response => {
@@ -27,6 +27,7 @@ const TimelineViewer = () => {
             .catch(error => {
                 console.log("Error getting timeline data from API")
             });
+            console.log(timelineData);
         }
         else {
             axios.get('/bp')
@@ -54,8 +55,12 @@ const TimelineViewer = () => {
 
     const headers = [
         {
+            header: 'Id',
+            key: "id"
+        },
+        {
             header: "Date", 
-            key: "date"
+            key: "datetime"
         },
         {
             header: "Patient",
@@ -63,7 +68,7 @@ const TimelineViewer = () => {
         },
         {
             header: "Heart Rate", 
-            key: "heartRate"
+            key: "heart_rate"
         },
         {
             header: "Unit",

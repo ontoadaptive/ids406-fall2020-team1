@@ -17,10 +17,10 @@ const {
   TableHeader
 } = DataTable;
 
+
 const SmartlistViewer = () => {
   const dispatch = useDispatch();
   const smartlistData = useSelector(getSmartlistData);
-  console.log('SmartlistViewer', smartlistData);
   const isFetching = useSelector(getSmartlistIsFetching);
 
   useEffect(() => {
@@ -29,13 +29,25 @@ const SmartlistViewer = () => {
 
   const headers = [
     {
-      header: "Name",
-      key: "user_id"
+      header: "Id",
+      key: "id"
     },
     {
-      header: "BP values",
-      key: "bp_value"
-    }
+      header: "Date",
+      key: "datetime"
+    },
+    {
+      header: "Patient",
+      key: "patient"
+    },
+    {
+      header: "Heart Rate",
+      key: "heart_rate"
+    },
+    {
+      header: "Unit",
+      key: "unit"
+    },
   ];
 
   return (

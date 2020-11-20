@@ -15,12 +15,12 @@ const {
 
 const Beta = true;
 const MedicationsViewer = () => {
-  const [medicationsData, setMedicationsData] = useState([]); //locla localhost
+  const [medicationsData, setMedicationsData] = useState([]);
   
+  //switcher needs to be cleaned up
   useEffect(() => {
     if (Beta) {
       axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
-      //console.log(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
       //axios.get('http://127.0.0.1:8000/api/medication/')
       .then(response => {
         const data = response.data;
