@@ -22,6 +22,9 @@ const AppHeader = () => (
                 <HeaderMenuItem id = "timeline-menu-items" href="/timeline">
                     Timeline
                 </HeaderMenuItem>
+                <HeaderMenuItem id = "smartlist-menu-items" href="/smartlist">
+                    Smartlist
+                </HeaderMenuItem>
         </HeaderNavigation>
     </Header>
 );
