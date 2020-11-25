@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../axios/instance";
 
 import { DataTable} from "carbon-components-react"
+import {betaInstance, instance} from "../axios/";
 
 const {
     TableContainer,
@@ -18,39 +19,16 @@ const TimelineViewer = () => {
     
     //switcher needs to be cleaned up
     useEffect(() => {
-        if (Beta) {
-            axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_TIMELINE_KEY}`)
-            .then(response => {
-                const data = response.data;
-                setTimelineData(data)
-            })
-            .catch(error => {
-                console.log("Error getting timeline data from API")
-            });
-            console.log(timelineData);
-        }
-        else {
-            axios.get('/bp')
-            .then (response => {
-                //console.log("ay", response.data);
-                const data = response.data;
-                const modifiedData = data.map((el) => {
-                return {
-                    datetime: el.body.effective_time_frame.date_time,
-                    patient: el.header.user_id,
-                    heart_rate: el.body.heart_rate.value,
-                    unit: el.body.heart_rate.unit,
-                    
-                };
-                })
-                console.log("modifiedData", modifiedData);
-                setTimelineData(modifiedData);
-            })
-            .catch(error => {
-                console.log("Error getting timeline data")
-            });   
-        
-        }
+        const url = Beta ? betaInstance : instance;
+        url.get('/observation')
+        .then(response => {
+            const data = response.data;
+            setTimelineData(data)
+        })
+        .catch(error => {
+            console.log("Error getting timeline data from API")
+        });
+
     }, []);
 
     const headers = [

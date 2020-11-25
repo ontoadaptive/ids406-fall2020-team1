@@ -6,11 +6,11 @@ django.setup()
 from django.utils import timezone
 from datetime import datetime
 
-from snobird_v7.models import Timeline
+from snobird_v7.models import Observation
 
 def delete_observations():
-    Timeline.objects.all().delete()
+    Observation.objects.all().delete()
 
 def create_observations(date_time, name, heart_rate, unit):
-    o = Timeline(datetime = date_time, patient = name, heart_rate = heart_rate, unit = unit)
+    o = Observation(datetime = date_time, patient = name, heart_rate = heart_rate, unit = unit)
     o.save()

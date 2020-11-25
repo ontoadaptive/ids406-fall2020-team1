@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../axios/instance";
 
 import { DataTable } from "carbon-components-react"
+import {betaInstance, instance} from "../axios/";
 
 const {
   TableContainer,
@@ -17,30 +18,21 @@ const Beta = true;
 const MedicationsViewer = () => {
   const [medicationsData, setMedicationsData] = useState([]);
   
-  //switcher needs to be cleaned up
-  useEffect(() => {
-    if (Beta) {
-      axios.get(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MEDICATIONS_KEY}`)
-      //axios.get('http://127.0.0.1:8000/api/medication/')
-      .then(response => {
-        const data = response.data;
-        setMedicationsData(data)
-      })
-      .catch(error => {
-        console.log("Error getting medication data from API")
-      });
-    }
-
-    else {
-      axios.get('/medications')  
-      .then(response => {
-        const data = response.data;
-        setMedicationsData(data)
-      })
-      .catch(error => {
-        console.log("Error getting medication data")
-      });
-    }
+  useEffect(() => { 
+    const url = Beta ? betaInstance : instance;
+    console.log(url)
+    url.get('/medication')
+    
+    //axios.get('http://127.0.0.1:8000/api/medication/')
+    .then(response => {
+      const data = response.data;
+      console.log(response)
+      setMedicationsData(data)
+    })
+    .catch(error => {
+      console.log("Error getting medication data from API")
+    });
+    
   }, []);
 
   

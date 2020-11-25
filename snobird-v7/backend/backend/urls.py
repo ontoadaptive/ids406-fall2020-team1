@@ -21,7 +21,7 @@ from snobird_v7 import views
 router = routers.DefaultRouter()
 router.register(r'patient', views.PatientView, 'patient')
 router.register(r'medication', views.MedicationView, 'medication')
-router.register(r'timeline', views.TimelineView, 'timeline')
+router.register(r'observation', views.ObservationView, 'observation')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -35,17 +35,19 @@ class Medication(models.Model):
     times = models.CharField(max_length=20, null = True) #change this to time field
     amount = models.CharField(max_length=20, null = True) 
 
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, null = True, on_delete=models.CASCADE)
     #
     def __str__(self):
         return self.name
 
-class Timeline(models.Model):
+class Observation(models.Model):
     id = models.AutoField(primary_key = True)
     datetime = models.DateTimeField(null = True)
-    #patient = models.ForeignKey(Patient, default = "" ,on_delete=models.CASCADE)
     patient = models.CharField(max_length=20, null = True)
     heart_rate = models.FloatField(max_length=20, null = True)
     unit = models.CharField(max_length=20, null = True)
+
+    #patient_id = models.ForeignKey(Patient, null = True, on_delete=models.CASCADE)
+    #
     
     

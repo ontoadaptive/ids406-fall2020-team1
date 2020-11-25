@@ -11,7 +11,7 @@
       "address": "5 Awesome Rd. Cleveland, Ohio 44118"
     }
   ],
-  "observations": [
+  "observation": [
     {
       "id": "19876",
       "type": "blood-pressure",
