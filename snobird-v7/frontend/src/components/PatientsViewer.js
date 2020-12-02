@@ -20,7 +20,7 @@ const PatientsViewer = () => {
       console.log("Error getting patient data")
     });
   }, []);
-
+  console.log('patientdata', patientsData)
   return (
     <div>
       <StructuredListWrapper ariaLabel="Patients Structured List">

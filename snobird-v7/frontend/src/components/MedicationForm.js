@@ -4,7 +4,7 @@ import { Dropdown ,FormGroup, ModalWrapper, TextInput
 import betaInstance from "../axios/betaInstance";
 import instance from "../axios/instance";
 
-const Beta = false;
+const Beta = true;
 
 const MedicationForm = () => {
     const [name, setName] = useState("");
@@ -18,6 +18,7 @@ const MedicationForm = () => {
     
     const handleFormSubmit = () => {
         const data = {
+            // id: 2,
             name: name,
             dose: dose,
             dat: days,
@@ -32,6 +33,7 @@ const MedicationForm = () => {
         })
         .catch( error => {
             console.log("Error sending medication data to API")
+            console.log(error.response); 
         });
     };
 

@@ -28,7 +28,7 @@ class Patient(models.Model):
 
 class Medication(models.Model):
 
-    id = models.AutoField(primary_key = True)
+    #id = models.AutoField(primary_key = True)
     name = models.CharField(max_length=20, null = True)
     dose = models.CharField(max_length=20, null = True)
     days = models.CharField(max_length=20, null = True) #possibly change this to choices
@@ -46,7 +46,7 @@ class Observation(models.Model):
     patient = models.CharField(max_length=20, null = True)
     heart_rate = models.FloatField(max_length=20, null = True)
     unit = models.CharField(max_length=20, null = True)
-
+    
     #patient_id = models.ForeignKey(Patient, null = True, on_delete=models.CASCADE)
     #
     

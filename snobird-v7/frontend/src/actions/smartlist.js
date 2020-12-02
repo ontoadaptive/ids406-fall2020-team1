@@ -18,7 +18,7 @@ export const fetchSmartlistStarted = () => {
   export const fetchSmartlistFailure = error => {
     console.error('Unable to get smartlist data');
     return {
-      type: "GET_INVENTORY_FAILURE",
+      type: "GET_SMARTLIST_FAILURE",
       data: error
     };
   };
