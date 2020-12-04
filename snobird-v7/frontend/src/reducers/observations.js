@@ -1,26 +1,26 @@
 const initialData = {
-    smartlistData: [],
+    observationsData: [],
     isFetching: false,
     isError: '',
   };
   
-  const smartlistReducer = (state = initialData, action) => {
+  const observationsReducer = (state = initialData, action) => {
     switch (action.type) {
-      case "GET_SMARTLIST_STARTED":
+      case "GET_OBSERVATIONS_STARTED":
         return {
           ...state,
-          smartlistData: [],
+          observationsData: [],
           isFetching: true,
           isError: ''
         };
-      case "GET_SMARTLIST_SUCCESS":
+      case "GET_OBSERVATIONS_SUCCESS":
         return {
           ...state,
-          smartlistData: action.data,
+          observationsData: action.data,
           isFetching: false,
           isError: ''
         };
-      case "GET_SMARTLIST_FAILURE":
+      case "GET_OBSERVATIONS_FAILURE":
         return {
           ...state,
           isFetching: false,
@@ -31,5 +31,5 @@ const initialData = {
     }
   };
   
-  export default smartlistReducer;
+  export default observationsReducer;
   

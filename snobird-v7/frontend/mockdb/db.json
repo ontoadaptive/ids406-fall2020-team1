@@ -1,5 +1,5 @@
 {
-  "patients": [
+  "patient": [
     {
       "id": "123",
       "name": "Bob Sample",
@@ -13,28 +13,49 @@
   ],
   "observation": [
     {
+      "id": "87234",
+      "datetime": "2014-11-03T12:41:12Z",
+      "type": "blood-pressure",
+      "value": "75/72",
+      "unit" : "beats/min",
+      "patient": "mary",
+      "type_cd": "1"
+    },
+    {
       "id": "19876",
+      "datetime": "2014-11-03T12:41:12Z",
       "type": "blood-pressure",
       "value": "134/76",
-      "patient": "123"
+      "unit" : "beats/min",
+      "patient": "mary",
+      "type_cd": "2"
     },
     {
       "id": "87234",
+      "datetime": "2014-11-03T12:41:12Z",
       "type": "blood-pressure",
       "value": "127/72",
-      "patient": "456"
+      "unit" : "beats/min",
+      "patient": "mary",
+      "type_cd": "2"
     },
     {
       "id": "23489",
+      "datetime": "2014-11-03T12:41:12Z",
       "type": "blood-pressure",
       "value": "145/85",
-      "patient": "123"
+      "unit" : "beats/min",
+      "patient": "mary",
+      "type_cd": "3"
     },
     {
       "id": "82937",
+      "datetime": "2014-11-03T12:41:12Z",
       "type": "blood-pressure",
       "value": "155/84",
-      "patient": "456"
+      "unit" : "beats/min",
+      "patient": "mary",
+      "type_cd": "3"
     }
   ],
   "medications": [
@@ -61,51 +82,6 @@
       "days": "MTWFS",
       "times": "9:00AM",
       "amount": "15"
-    }
-  ],
-  "smartlist": [
-    {
-      "category": 1,
-      "data":[
-        {
-          "id": 1,
-          "datetime": "2014-01-03T05:53:33Z",
-          "patient": "Mary",
-          "heart_rate": 130,
-          "unit": "beats/min"
-        },
-        {
-          "id": 2,
-          "datetime": "2014-01-03T05:53:33Z",
-          "patient": "Mary",
-          "heart_rate": 145,
-          "unit": "beats/min"
-        }
-      ]
-    },
-    {
-      "category" : 2,
-      "data" : [
-        {
-          "id": 1,
-          "datetime": "2014-01-03T05:53:33Z",
-          "patient": "Mary",
-          "heart_rate": 100,
-          "unit": "beats/min"
-        }
-      ]
-    },
-    {
-      "category" : 3,
-      "data" : [
-        {
-          "id": 1,
-          "datetime": "2014-01-03T05:53:33Z",
-          "patient": "Mary",
-          "heart_rate": 75,
-          "unit": "beats/min"
-        }
-      ]
     }
   ]
 }

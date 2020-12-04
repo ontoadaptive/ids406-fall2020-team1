@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import smartlist from "./smartlist";
+import observations from "./observations";
 
-export default combineReducers({ smartlist })
+export default combineReducers({ observations })
 

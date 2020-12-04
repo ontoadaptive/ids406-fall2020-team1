@@ -6,7 +6,7 @@ from .models import Patient, Medication, Observation
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ('first_name', 'last_name', 'gender')
+        fields = ('name', 'address')
 
 class MedicationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,6 +14,7 @@ class MedicationSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'dose', 'days', 'times', 'amount', 'patient')
         
 class ObservationSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Observation
-        fields = ('id','datetime','patient', 'heart_rate', 'unit')
+        fields = ('id','datetime','patient', 'value', 'unit', 'type_cd')

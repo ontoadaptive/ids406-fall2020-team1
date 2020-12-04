@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "../axios/instance";
-
-import { DataTable} from "carbon-components-react"
-import {betaInstance, instance} from "../axios/";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchObservations } from "../actions/observations";
+import { getObservationsData, getObservationsIsFetching } from "../selectors";
+import { DataTable} from "carbon-components-react";
+import { LoadingIndicator } from "../components";
 
 const {
     TableContainer,
@@ -15,21 +16,14 @@ const {
   } = DataTable;
 const Beta = true; 
 const TimelineViewer = () => {
-    const [timelineData, setTimelineData] = useState([]);
-    
-    //switcher needs to be cleaned up
-    useEffect(() => {
-        const url = Beta ? betaInstance : instance;
-        url.get('/observation')
-        .then(response => {
-            const data = response.data;
-            setTimelineData(data)
-        })
-        .catch(error => {
-            console.log("Error getting timeline data from API")
-        });
+    const dispatch = useDispatch();
+    const observationstData = useSelector(getObservationsData);
 
-    }, []);
+    const isFetching = useSelector(getObservationsIsFetching);
+
+    useEffect(() => {
+        dispatch(fetchObservations());
+        }, [dispatch]);
 
     const headers = [
         {
@@ -46,7 +40,7 @@ const TimelineViewer = () => {
         },
         {
             header: "Heart Rate", 
-            key: "heart_rate"
+            key: "value"
         },
         {
             header: "Unit",
@@ -54,35 +48,38 @@ const TimelineViewer = () => {
         }
     ]
     return (
-        <DataTable
-            rows={timelineData}
-            headers={headers}
-            render={({ rows, headers, getHeaderProps, getRowProps }) => (
-                <TableContainer title = "Timeline List">
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                {headers.map(header => (
-                                    <TableHeader {...getHeaderProps({ header })} >
-                                        {header.header}
-                                    </TableHeader>
-                                ))}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rows.map(row => (
-                                <TableRow key={row.id} {...getRowProps({ row })}>
-                                    {console.log(row)}
-                                    {row.cells.map(cell => (
-                                        <TableCell key={cell.id}>{cell.value}</TableCell>
-                                    ))}    
-                                </TableRow>  
-                            ))}                      
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            )}
-        />
+        <div>
+            <LoadingIndicator active={isFetching} />
+            <DataTable
+                rows={observationstData}
+                headers={headers}
+                render={({ rows, headers, getHeaderProps, getRowProps }) => (
+                    <TableContainer title = "Timeline List">
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    {headers.map(header => (
+                                        <TableHeader {...getHeaderProps({ header })} >
+                                            {header.header}
+                                        </TableHeader>
+                                    ))}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map(row => (
+                                    <TableRow key={row.id} {...getRowProps({ row })}>
+                                        {console.log(row)}
+                                        {row.cells.map(cell => (
+                                            <TableCell key={cell.id}>{cell.value}</TableCell>
+                                        ))}    
+                                    </TableRow>  
+                                ))}                      
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                )}
+            />
+        </div>
     );
 
 

@@ -3,13 +3,13 @@ from .models import Patient, Medication, Observation
 
 
 class PatientAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'gender')
+    list_display = ('name', 'address')
 
 class MedicationAdmin(admin.ModelAdmin):
     list_display = ('name','dose','days','times', 'amount', "patient")
 
 class ObservationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'datetime')
+    list_display = ('datetime', 'patient', 'value', 'unit', 'type_cd')
 
 
 # Register your models here.
