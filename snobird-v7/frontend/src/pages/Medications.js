@@ -7,8 +7,6 @@ const Medications = () => {
         <MedicationsViewer />
         <br/>
         <MedicationForm/>
-        <br/>
-        <MedicationNotification/>
         </>
     );
 };

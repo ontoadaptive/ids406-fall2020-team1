@@ -1,19 +1,20 @@
 #main/serializers.py
 
 from rest_framework import serializers
-from .models import Patient, Medication, Timeline
+from .models import Patient, Medication, Observation
 
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ('first_name', 'last_name', 'gender')
+        fields = ('name', 'address')
 
 class MedicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medication
         fields = ('id', 'name', 'dose', 'days', 'times', 'amount', 'patient')
         
-class TimelineSerializer(serializers.ModelSerializer):
+class ObservationSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = Timeline
-        fields = ('id','datetime','patient', 'heart_rate', 'unit')
+        model = Observation
+        fields = ('id','datetime','patient', 'value', 'unit', 'type_cd')

@@ -1,27 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { Dropdown ,FormGroup, ModalWrapper, TextInput
+import React, { useState } from "react";
+import { FormGroup, ModalWrapper, TextInput
 } from "carbon-components-react"
+import betaInstance from "../axios/betaInstance";
+import instance from "../axios/instance";
+
+const Beta = true;
 
 const MedicationForm = () => {
-    // const [id, setId] = useState("");
     const [name, setName] = useState("");
-    const [dosage, setDosage] = useState("");
+    const [dose, setDose] = useState("");
     const [days, setDays] = useState("");
+    const [times,setTimes] = useState("")
     const [amount, setAmount] = useState("");
-    // const [observationType, setObservationType] = useState("");
-    // const [observationValue, setObservationValue] = useState("");
+
     const [patientId, setPatientId] = useState();
-    
+
     const handleFormSubmit = () => {
-        console.log('Medication Name: ', name);
-        console.log('Dosage: ', dosage);
-        console.log('Days: ', days);
-        console.log('Amount: ', amount);
-        console.log('Patient Id: ', patientId);
-    // console.log('Medication Id: ', id);
-    // console.log('MedicationType: ', observationType);
-    // console.log('ObservationValue: ', observationValue);
-    
+        const data = {
+            name: name,
+            dose: dose,
+            days: days,
+            times: times,
+            amount: amount,
+            patient: patientId
+        };
+
+        const url = Beta ? betaInstance : instance;
+        url.post("/medication/", data)
+        .then(response => {
+            console.log(response)
+        })
+        .catch( error => {
+            console.log("Error sending medication data to API") 
+        });
     };
 
     return (
@@ -34,30 +45,13 @@ const MedicationForm = () => {
                 hasScrollingContent={false}
                 id="add-medication-modal"
                 modalHeading="Add Medication"
-                primaryButtonText="Update"
+                primaryButtonText="Add"
                 renderTriggerButtonIcon={undefined}
                 secondaryButtonText = "Cancel"
                 selectorPrimaryFocus = "[data-modeal-primary-focus]" 
                 shouldCloseAfterSubmit
                 triggerButtonKind = "primary"
             >
-
-                {/* <FormGroup
-                invalid={false}
-                //legendText="Id"
-                message={false}
-                >
-                <TextInput
-                    id="medication-id-input"
-                    invalid={false}
-                    invalidText="A valid value is required"
-                    labelText="Medication Id"
-                    light={true}
-                    type="text"
-                    value={id} //variable
-                    onChange={e => setId(e.target.value)}
-                />
-                </FormGroup> */}
 
                 <FormGroup
                     invalid={false}
@@ -68,44 +62,26 @@ const MedicationForm = () => {
                     id="medication-name-input"
                     invalid={false}
                     invalidText="A valid value is required"
-                    labelText=""
                     light={true}
                     type="text"
-                    value={name} //variable
+                    value={name} 
                     onChange={e => setName(e.target.value)}
                 />
                 </FormGroup>
-{
-/* 
-                <FormGroup
-                    invalid={false}
-                    legendText="Medication Type"
-                    message={false}
-                >
-                <Dropdown
-                    ariaLabel="Medicatrion Type Dropdown"
-                    id="medication-type-input"
-                    invalidText="A valid value is required"
-                    items={["Blood Pressure", "Temperature", "Other"]}
-                    label="Select Observation Type"
-                    onChange={e => setObservationType(e.selectedItem)}    
-                />
-                </FormGroup> */}
 
                 <FormGroup
                     invalid={false}
-                    legendText="Dosage"
+                    legendText="Dose"
                     message={false}
                 >
                 <TextInput
-                    id="medication-dosage-input"
+                    id="medication-dose-input"
                     invalid={false}
                     invalidText="A valid value is required"
-                    labelText=""
                     light={true}
                     type="text"
-                    value={dosage}
-                    onChange={e => setDosage(e.target.value)}
+                    value={dose}
+                    onChange={e => setDose(e.target.value)}
                 />
                 </FormGroup>
                 
@@ -125,6 +101,25 @@ const MedicationForm = () => {
                     onChange={e => setDays(e.target.value)}
                 />
                 </FormGroup>
+
+                <FormGroup
+                    invalid={false}
+                    legendText="Time"
+                    message={false}
+                >
+                <TextInput
+                    id="medication-times-input"
+                    invalid={false}
+                    invalidText="A valid value is required"
+                    labelText=""
+                    light={true}
+                    type="text"
+                    value={times}
+                    onChange={e => setTimes(e.target.value)}
+                />
+                </FormGroup>
+
+
                 <FormGroup
                     invalid={false}
                     legendText="Amount"

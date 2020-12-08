@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axios/instance";
+import { betaInstance, instance } from '../axios'
+
 import { 
   StructuredListWrapper,
   StructuredListHead,
@@ -7,11 +8,14 @@ import {
   StructuredListRow,
   StructuredListCell
 } from 'carbon-components-react';
+
+const Beta = true;
 const PatientsViewer = () => {
   const [patientsData, setPatientsData] = useState([]);
 
   useEffect(() => {
-    axios.get('patients/')
+    const url = Beta ? betaInstance : instance;
+    url.get('patient/')
     .then(response => {
       const data = response.data.concat()
       setPatientsData(data)
@@ -20,15 +24,12 @@ const PatientsViewer = () => {
       console.log("Error getting patient data")
     });
   }, []);
-
+  console.log('patientdata', patientsData)
   return (
     <div>
       <StructuredListWrapper ariaLabel="Patients Structured List">
         <StructuredListHead>
           <StructuredListRow head tabIndex={0}>
-            <StructuredListCell head>
-              Id
-            </StructuredListCell>
             <StructuredListCell head>
               Name
             </StructuredListCell>
@@ -40,9 +41,6 @@ const PatientsViewer = () => {
         <StructuredListBody>
           {patientsData.map((patient) =>
             <StructuredListRow tabIndex={0}>
-              <StructuredListCell>
-                {patient.id}
-              </StructuredListCell>
               <StructuredListCell>
                 {patient.name}
               </StructuredListCell>
