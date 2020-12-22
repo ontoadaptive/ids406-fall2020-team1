@@ -7,7 +7,7 @@ from snobird_v8.foo2 import Foo2
 
 @pytest.fixture
 def foo():
-    foo = Foo(2)
+    foo = Foo(2, 3)
     return foo
 
 @pytest.fixture
@@ -19,4 +19,10 @@ def test_foo_bar(foo):
     assert foo.bar() == 4
 
 def test_foo2_bar(foo2):
-    assert foo2.bar(2) == 4    
+    assert foo2.bar(2) == 4
+
+def test_foo_goo(foo):
+    assert foo.goo() == 9
+
+def test_foo2_goo(foo2):
+    assert foo2.goo(3) == 9    
