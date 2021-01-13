@@ -25,6 +25,9 @@ const AppHeader = () => (
                 <HeaderMenuItem id = "smartlist-menu-items" href="/smartlist">
                     Smartlist
                 </HeaderMenuItem>
+                <HeaderMenuItem id = "login-menu-items" href="/login">
+                    Login
+                </HeaderMenuItem>
         </HeaderNavigation>
     </Header>
 );
