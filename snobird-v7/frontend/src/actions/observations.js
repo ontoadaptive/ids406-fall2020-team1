@@ -1,5 +1,5 @@
 import store from '../store';
-import { betaInstance, instance } from '../axios'
+import { betaInstance, instance } from '../axios';
 
 
 export const fetchObservationsStarted = () => {

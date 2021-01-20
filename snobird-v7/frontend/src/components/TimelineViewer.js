@@ -14,7 +14,7 @@ const {
     TableCell,
     TableHeader
   } = DataTable;
-const Beta = true; 
+
 const TimelineViewer = () => {
     const dispatch = useDispatch();
     const observationstData = useSelector(getObservationsData);

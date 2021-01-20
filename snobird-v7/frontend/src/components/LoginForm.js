@@ -12,7 +12,7 @@ const LoginForm = () => {
 
     const handleSubmit = () => {
         const matches = userAuth.filter(auth => auth.username === username && auth.password === password);   
-        if (matches === undefined || matches.length == 0) {
+        if (matches === undefined || matches.length === 0) {
             setLoginAttempts(loginAttempts + 1);
             console.log("failure", loginAttempts);
         } else {

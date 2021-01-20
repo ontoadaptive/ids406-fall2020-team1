@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { AppHeader, LoginForm} from "./components";
+import { AppHeader} from "./components";
 import { Medications, Timeline, Patient, Smartlist, Login } from "./pages";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { Content } from "carbon-components-react/lib/components/UIShell";
@@ -13,14 +13,14 @@ const App = () => {
       <Content>
         <Router>
           <Switch>
+            <Route path="/patients/">
+              <Patient />
+            </Route>
             <Route path="/medications/">
               <Medications />
             </Route>
             <Route path="/timeline/">
               <Timeline />
-            </Route>
-            <Route path="/patients/">
-              <Patient />
             </Route>
             <Route path="/smartlist/">
               <Smartlist/>
@@ -29,7 +29,7 @@ const App = () => {
               <Login/>
             </Route>
             <Route path = "*">
-              <Timeline />
+              <Patient />
             </Route>
           </Switch>
         </Router>

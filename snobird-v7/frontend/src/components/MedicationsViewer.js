@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axios/instance";
-
 import { DataTable } from "carbon-components-react"
 import {betaInstance, instance} from "../axios/";
 

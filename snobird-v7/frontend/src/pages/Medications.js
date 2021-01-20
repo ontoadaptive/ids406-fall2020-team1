@@ -1,5 +1,5 @@
 import React from "react";
-import { MedicationsViewer, MedicationForm, MedicationNotification } from '../components';
+import { MedicationsViewer, MedicationForm } from '../components';
 import {instance} from "../axios/";
 import {useEffect, useState} from "react";
 
@@ -23,7 +23,7 @@ const Medications = () => {
         <>
         <MedicationsViewer />
         <br/>
-        {user.role > 0 &&<MedicationForm/>}
+        {user.role > 1 &&<MedicationForm/>}
         
         </>
     );
