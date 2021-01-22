@@ -8,7 +8,6 @@ import {
     HeaderMenuButton,
     HeaderGlobalAction,
     HeaderGlobalBar,
-    HeaderSideNavItems,
     SideNav,
     SideNavItems,
     SideNavLink,
@@ -16,17 +15,20 @@ import {
     SideNavMenuItem
 } from "carbon-components-react/lib/components/UIShell";
 import { User32 } from '@carbon/icons-react';
-import LoginRedirect from './LoginRedirect';
+import {LoginRedirect} from '../services/';
 
-
-const AppHeader = () => (
-    <HeaderContainer
+const AppHeader = () => {
+    return (
+    <>
+        <HeaderContainer
         render={({isSideNavExpanded,onClickSideNavExpand}) => (
             <Header aria-label="SNOBIRD V7">
+                
                 <HeaderMenuButton
                     aria-label="open menu"
                     onClick={onClickSideNavExpand}
-                    isActive={isSideNavExpanded}/>
+                    isActive={isSideNavExpanded}
+                />
                 <HeaderName id = "header-name" href="/" prefix = "">
                     SNOBIRDv7
                 </HeaderName>
@@ -40,20 +42,9 @@ const AppHeader = () => (
                         <User32/>
                     </HeaderGlobalAction>
                 </HeaderGlobalBar>
-                <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
+                <SideNav aria-label="Side navigation" expanded={isSideNavExpanded} isRail = {true}>
                     <SideNavItems>
-                        <HeaderSideNavItems hasDivider={true}>
-                            <HeaderMenuItem id = "medications-menu-items" href="/medications">
-                                Medication
-                            </HeaderMenuItem>
-                            <HeaderMenuItem id = "timeline-menu-items" href="/timeline">
-                                Timeline
-                            </HeaderMenuItem>
-                            <HeaderMenuItem id = "smartlist-menu-items" href="/smartlist">
-                                Smartlist
-                            </HeaderMenuItem>
-                        </HeaderSideNavItems>
-                        <SideNavMenu title ="Observations">
+                        <SideNavMenu title ="Observations" > 
                             <SideNavMenuItem href="/medications">
                                 Medication
                             </SideNavMenuItem>
@@ -69,6 +60,8 @@ const AppHeader = () => (
             </Header>
         )}
     />
-);
+    </>
+    );
+    };
 
 export default AppHeader;

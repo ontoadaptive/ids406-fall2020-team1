@@ -103,14 +103,5 @@
       "password": "password12",
       "role": "1"
     }
-  ],
-  "user": [
-    {
-      "loggedIn": true,
-      "id": "1",
-      "userID": "1",
-      "username": "admin",
-      "role": "1"
-    }
   ]
 }

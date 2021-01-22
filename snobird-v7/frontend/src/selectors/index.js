@@ -4,3 +4,5 @@ import { get } from "lodash";
 export const getObservationsData = state => get(state.observations, "observationsData");
 export const getObservationsIsFetching = state => get(state.observations, "isFetching");
 export const getObservationsIsError = state => get(state.observations, "isError");
+
+//user authentication selector

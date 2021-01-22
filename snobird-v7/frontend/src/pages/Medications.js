@@ -1,29 +1,15 @@
 import React from "react";
 import { MedicationsViewer, MedicationForm } from '../components';
-import {instance} from "../axios/";
-import {useEffect, useState} from "react";
-
+import {FetchUserData} from "../services/";
 const Medications = () => {
-    const [user, setUser] = useState([]);
-    useEffect(()=> {
-        instance.get('/user/1')
+    const activeUser = FetchUserData()
 
-        .then(response => {
-            const data = response.data;
-            console.log("userdata", data)
-            setUser(data);
-        })
-        .catch(error => {
-            console.log("Error getting user data");
-        });
-    }, []);
-
-    console.log("medication testing", user.role);
+    console.log("medication testing", activeUser.role);
     return (
         <>
         <MedicationsViewer />
         <br/>
-        {user.role > 1 &&<MedicationForm/>}
+        {activeUser.role > 1 &&<MedicationForm/>}
         
         </>
     );
