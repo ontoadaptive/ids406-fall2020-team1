@@ -7,10 +7,10 @@ const Medications = () => {
     console.log("medication testing", activeUser.role);
     return (
         <>
-        <MedicationsViewer />
-        <br/>
-        {activeUser.role > 1 &&<MedicationForm/>}
-        
+            <MedicationsViewer />
+            <br/>
+            {activeUser.role > 1 &&<MedicationForm/>}
+            
         </>
     );
 };
