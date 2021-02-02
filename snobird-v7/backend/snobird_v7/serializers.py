@@ -1,8 +1,12 @@
 #main/serializers.py
 
 from rest_framework import serializers
-from .models import Patient, Medication, Observation
+from .models import Patient, Medication, Observation, Project
 
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = ('name')
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient

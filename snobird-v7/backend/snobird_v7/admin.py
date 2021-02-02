@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import Patient, Medication, Observation
+from .models import Patient, Medication, Observation, Project
 
+class ProjectAdmin(admin.ModelAdmin):
+    name = ['name']
 
 class PatientAdmin(admin.ModelAdmin):
     list_display = ('name', 'address')
@@ -13,6 +15,7 @@ class ObservationAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Patient, PatientAdmin)
 admin.site.register(Medication, MedicationAdmin)
 admin.site.register(Observation, ObservationAdmin)

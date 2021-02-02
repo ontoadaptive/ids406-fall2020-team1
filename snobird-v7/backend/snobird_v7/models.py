@@ -1,10 +1,17 @@
 from django.db import models
 
 # Create your models here.
+class Project(models.Model):
+    name = models.CharField(max_length=20, null = True)
+    researcher = models.CharField(max_length=20, null = True)
+    def __str__(self):
+        return self.name
+
 class Patient(models.Model):
     patient_id = models.AutoField(primary_key = True)
     name = models.CharField(max_length=20, null = True)
     address = models.CharField(max_length=20, null = True)
+    project = models.ManyToManyField(Project)
 
     def __str__(self):
         return self.name
