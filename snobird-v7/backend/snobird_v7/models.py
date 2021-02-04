@@ -34,3 +34,8 @@ class Observation(models.Model):
     value = models.FloatField(max_length=20, null = True)
     unit = models.CharField(max_length=20, null = True)
     type_cd = models.IntegerField(null=True)
+
+class PatientOption(models.Model):
+    patient_key = models.ForeignKey(Patient, null = True, on_delete=models.CASCADE)
+    patient_option_name = models.CharField(max_length=20, null = True)
+    patient_option_details = models.JSONField(default='dict()')
