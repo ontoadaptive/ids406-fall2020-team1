@@ -58,7 +58,7 @@
       "type_cd": "3"
     }
   ],
-  "medications": [
+  "medication": [
     {
       "id": "1",
       "name": "Losartan",
@@ -103,5 +103,13 @@
       "password": "password12",
       "role": "1"
     }
-  ]
+  ],
+  "patientoption": [
+    {
+      "patient": "Mary",
+      "options": {
+        "role": "reviewer"
+      }
+    }
+  ]  
 }

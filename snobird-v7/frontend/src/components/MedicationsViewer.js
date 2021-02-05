@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DataTable } from "carbon-components-react"
+import { DataTable, Button } from "carbon-components-react"
 import {betaInstance, instance} from "../axios/";
 
 const {
@@ -9,16 +9,21 @@ const {
   TableRow,
   TableBody,
   TableCell,
-  TableHeader
+  TableHeader,
+  TableToolbar,
+  TableToolbarSearch,
+  TableSelectAll,
+  TableSelectRow,
+  TableBatchActions,
+  TableBatchAction
 } = DataTable;
 
-const Beta = true;
+const Beta = false;
 const MedicationsViewer = () => {
   const [medicationsData, setMedicationsData] = useState([]);
-  
+
   useEffect(() => { 
     const url = Beta ? betaInstance : instance;
-    console.log(url)
     url.get('/medication')
     
     //axios.get('http://127.0.0.1:8000/api/medication/')
@@ -32,7 +37,6 @@ const MedicationsViewer = () => {
     });
     
   }, []);
-
   
   const headers = [
     {
@@ -61,37 +65,57 @@ const MedicationsViewer = () => {
     }
   ];
 
+  const batchActionClick = (rows) => {
+    console.log('my rows:', rows)
+  }
+
   return (
-    <DataTable
-      rows={medicationsData}
-      headers={headers}
-      render={({ rows, headers, getHeaderProps}) => (
-        <TableContainer title="Medication List">
-          <Table>
-            <TableHead>
-              <TableRow>
-                {headers.map(header => (
-                  // eslint-disable-next-line react/jsx-key
-                  <TableHeader {...getHeaderProps({ header })}>
-                    {header.header}
-                  </TableHeader>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.id}>
-                  {console.log(row)}
-                  {row.cells.map(cell => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
+    <>
+      <DataTable
+        rows={medicationsData}
+        headers={headers}
+        render={({ rows, headers,
+          getHeaderProps, getSelectionProps,
+          getBatchActionProps, onInputChange,  
+          selectedRows
+        }) => (
+          <TableContainer title="Medication List">
+            <TableToolbar>
+              <TableBatchActions {...getBatchActionProps()}>
+                <TableBatchAction onClick={batchActionClick(selectedRows)}>
+                  Export
+                </TableBatchAction>
+              </TableBatchActions>
+              <TableToolbarSearch onChange={onInputChange} />
+            </TableToolbar>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableSelectAll {...getSelectionProps()}/>
+                  {headers.map(header => (
+                    // eslint-disable-next-line react/jsx-key
+                    <TableHeader {...getHeaderProps({ header })}>
+                      {header.header}
+                    </TableHeader>
                   ))}
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      )}
-    />   
+              </TableHead>
+              <TableBody>
+                {rows.map(row => (
+                  <TableRow key={row.id}>
+                    <TableSelectRow {...getSelectionProps({ row })}/>
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+      />   
+
+    </>  
   );
 };
 

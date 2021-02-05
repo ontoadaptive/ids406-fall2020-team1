@@ -13,3 +13,4 @@ export { default as AppHeader } from "./AppHeader";
 export { default as LoadingIndicator } from "./LoadingIndicator";
 export { default as SideNavPanel} from "./SideNavPanel";
 export { default as ObservationImport} from "./ObservationImport";
+export { default as PatientOption} from "./PatientOption"

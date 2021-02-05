@@ -1,10 +1,11 @@
 import React from "react";
-import { ProfileDisplay } from "../components";
+import { ProfileDisplay, PatientOption } from "../components";
 
 const Profile = () => {
     return (
         <div>
             <ProfileDisplay/>
+            <PatientOption/>
         </div>
     )
 }
