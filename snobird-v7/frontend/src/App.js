@@ -1,32 +1,46 @@
 import React from 'react';
 import './App.css';
-import { AppHeader} from "./components";
-import { Medications, Timeline, Patient, Smartlist } from "./pages";
+import { AppHeader,SideNavPanel} from "./components";
+import { Medications, Timeline, Patient, Smartlist, Login, Profile, ObservationManager } from "./pages";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { Content } from "carbon-components-react/lib/components/UIShell";
 
 
 const App = () => {
+  
   return (
     <div className="App">
-      <AppHeader />
+      <AppHeader/>
+      <SideNavPanel/>
       <Content>
         <Router>
           <Switch>
+            <Route path="/patients/">
+              <Patient />
+            </Route>
             <Route path="/medications/">
               <Medications />
             </Route>
             <Route path="/timeline/">
               <Timeline />
             </Route>
-            <Route path="/patients/">
-              <Patient />
-            </Route>
             <Route path="/smartlist/">
               <Smartlist/>
             </Route>
+            <Route path="/login">
+              <Login/>
+            </Route>
+            <Route path="/login">
+              <Login/>
+            </Route>
+            <Route path="/profile">
+              <Profile/>
+            </Route>
+            <Route path="/observation-manager">
+              <ObservationManager/>
+            </Route>
             <Route path = "*">
-              <Timeline />
+              <Patient />
             </Route>
           </Switch>
         </Router>

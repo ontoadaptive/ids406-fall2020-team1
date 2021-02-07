@@ -9,7 +9,7 @@ import {
   StructuredListCell
 } from 'carbon-components-react';
 
-const Beta = true;
+const Beta = false;
 const PatientsViewer = () => {
   const [patientsData, setPatientsData] = useState([]);
 

@@ -3,7 +3,10 @@ import { SmartlistViewer } from '../components';
 
 const Smartlist = () => {
     return (
-        <SmartlistViewer/>
+        <>
+
+            <SmartlistViewer/>
+        </>
     );
 };
 

@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import Patient, Medication, Observation
+from .models import Patient, Medication, Observation, Project, PatientOption
 
+class ProjectAdmin(admin.ModelAdmin):
+    name = ['name']
 
 class PatientAdmin(admin.ModelAdmin):
     list_display = ('name', 'address')
@@ -11,8 +13,12 @@ class MedicationAdmin(admin.ModelAdmin):
 class ObservationAdmin(admin.ModelAdmin):
     list_display = ('datetime', 'patient', 'value', 'unit', 'type_cd')
 
+class PatientOptionAdmin(admin.ModelAdmin):
+    list_display = ('patient_option_name', 'patient_option_details')
 
 # Register your models here.
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Patient, PatientAdmin)
 admin.site.register(Medication, MedicationAdmin)
 admin.site.register(Observation, ObservationAdmin)
+admin.site.register(PatientOption, PatientOptionAdmin)

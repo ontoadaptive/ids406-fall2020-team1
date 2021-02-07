@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+        snobird-v7:
+                container_name: snobird-v7
+                build:
+                        context: ./snobird-v7
+                        dockerfile: Dockerfile
+                command: python manage.py runserver 0.0.0.0:8000
+                volumes:
+                        - ./snobird-v7/:/usr/src/snobird-v7/
+                ports:
+                        - 8000:8000
+                        - 3000:3000
+                        - 35729:35729
+                env_file:
+                        - ./.env.dev
+                stdin_open: true
+                depends_on:
+                        - snobird-v7-db
+        snobird-v7-db:
+                container_name: snobird-v7-db
+                image: postgres:12.0-alpine
+                volumes:
+                        - postgres_data:/var/lib/postgresql/data/
+                environment:
+                        - POSTGRES_USER=dev_user
+                        - POSTGRES_PASSWORD=dev_password
+                        - POSTGRES_DB=dev
+volumes:
+        postgres_data:
+

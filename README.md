@@ -1,4 +1,17 @@
-SNOBIRD V7:
-BP-WEB-APP: Tech Modules developed by RF
+# snobird-v7
 
-Make files: type make help to see a list of commands. 
+## How to run
+- Makefile will have help target to show how to run
+
+## Environment
+- Ensure that a .env file has environment vars set properly.  An example configuration is shown in .env.dev
+- Configuration will control whether SNOBIRD will run all local frontend or with backend API integration
+
+## Frontend
+-
+
+## Backend
+-
+
+## DevOps
+-

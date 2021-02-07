@@ -20,6 +20,8 @@ const SmartlistViewer = () => {
         "value" : observation.value,
         "patient" : observation.patient,
       };
+    } else {
+      return {}
     };
   })
   const category3 = observationstData.filter((observation) => {
@@ -30,6 +32,8 @@ const SmartlistViewer = () => {
         "value" : observation.value,
         "patient" : observation.patient,
       };
+    } else {
+      return {}
     };
   })
 

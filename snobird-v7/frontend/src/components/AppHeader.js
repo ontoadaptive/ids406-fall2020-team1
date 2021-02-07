@@ -3,30 +3,33 @@ import {
     Header,
     HeaderName,
     HeaderNavigation,
-    HeaderMenuItem
+    HeaderMenuItem,
+    HeaderGlobalAction,
+    HeaderGlobalBar,
 } from "carbon-components-react/lib/components/UIShell";
-import App from "../App";
+import { User32 } from '@carbon/icons-react';
+import {LoginRedirect} from '../services/';
 
-const AppHeader = () => (
-    <Header aria-label="SNOBIRD V7">
-        <HeaderName id = "header-name" href="/" prefix = "">
-            SNOBIRDv7
-        </HeaderName>
-        <HeaderNavigation aria-label = "SNOBIRD Navigation">
-                <HeaderMenuItem id = "medications-menu-items" href="/medications">
-                    Medication
-                </HeaderMenuItem>
-                <HeaderMenuItem id = "patient-menu-items" href = "/patients">
-                    Patients
-                </HeaderMenuItem>
-                <HeaderMenuItem id = "timeline-menu-items" href="/timeline">
-                    Timeline
-                </HeaderMenuItem>
-                <HeaderMenuItem id = "smartlist-menu-items" href="/smartlist">
-                    Smartlist
-                </HeaderMenuItem>
-        </HeaderNavigation>
-    </Header>
-);
+const AppHeader = () => {
+    return (
+        <>              
+            <Header aria-label="SNOBIRD V7">
+                <HeaderName id = "header-name" href="/" prefix = "">
+                    SNOBIRDv7
+                </HeaderName>
+                <HeaderNavigation aria-label = "SNOBIRD Navigation">
+                    <HeaderMenuItem id = "patient-menu-items" href = "/patients">
+                        Patients
+                    </HeaderMenuItem>
+                </HeaderNavigation>
+                <HeaderGlobalBar>
+                    <HeaderGlobalAction id = "login-menu-items" aria-label="login" onClick={LoginRedirect}>
+                        <User32/>
+                    </HeaderGlobalAction>
+                </HeaderGlobalBar>
+            </Header>
+        </>
+    );
+};
 
 export default AppHeader;
