@@ -27,5 +27,6 @@ router.register(r'patientoption', views.PatientOptionView, 'patientoption')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('export/', views.export_csv),
     path('api/', include(router.urls))
 ]

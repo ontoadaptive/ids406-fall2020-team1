@@ -29,7 +29,6 @@ const MedicationsViewer = () => {
     //axios.get('http://127.0.0.1:8000/api/medication/')
     .then(response => {
       const data = response.data;
-      console.log(response)
       setMedicationsData(data)
     })
     .catch(error => {
@@ -65,9 +64,12 @@ const MedicationsViewer = () => {
     }
   ];
 
-  const batchActionClick = (rows) => {
-    console.log('my rows:', rows)
-  }
+  const batchActionClick = selectedRows => () =>
+    console.log(selectedRows.map(selection => (
+      selection.cells.map(cells => (
+        cells.value
+      ))
+    )));
 
   return (
     <>
