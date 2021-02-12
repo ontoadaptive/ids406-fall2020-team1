@@ -3,8 +3,17 @@ from rest_framework import viewsets
 from .serializers import PatientSerializer, MedicationSerializer, ObservationSerializer, ProjectSerializer, PatientOptionSerializer
 from .models import Patient, Medication, Observation, Project, PatientOption
 
-import csv
+from .utils import database_to_csv
 from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.settings import api_settings
+from rest_framework_csv import renderers as r
+
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
+from rest_framework.renderers import BrowsableAPIRenderer
+
+
 # Create your views here.
 class ProjectView(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
@@ -26,40 +35,35 @@ class PatientOptionView(viewsets.ModelViewSet):
     serializer_class = PatientOptionSerializer
     queryset = PatientOption.objects.all()
 
+class ExportCSV(APIView):
+    
+    renderer_classes = (r.CSVRenderer, ) + tuple(api_settings.DEFAULT_RENDERER_CLASSES)
+    
+    def get(self, request):
+        if request.method == 'GET':
+            data = database_to_csv(request, Medication.objects.all())
+            response = HttpResponse(data, content_type='text/csv')
+            return response
+        elif request.method == 'POST':
+            data = database_to_csv(request, Medication.objects.filter(id__in==response.data))
+            response = HttpResponse(data, content_type='text/csv')
+            return response
 
+    @classmethod
+    def get_extra_actions(cls):
+        return []
 
-def database_to_csv(request, queryset):
-    model = queryset.model #returns an object
-    model_fields = model._meta.fields + model._meta.many_to_many
-    field_names = [field.name for field in model_fields]
+class ExportJSON(APIView):
+    renderer_classes = [JSONRenderer]
 
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="export.csv"'
+    def get(self, request, format = None):
+        queryset = PatientOption.objects.all().values('patient_option_details')
+        return Response(queryset)
 
+    @classmethod
+    def get_extra_actions(cls):
+        return []
 
-    writer = csv.writer(response, delimiter=",")
-
-    writer.writerow(field_names)
-
-    for row in queryset:
-        values = []
-        for field in field_names:
-            value = getattr(row, field)
-            if callable(value):
-                try:
-                    value = value() or ''
-                except:
-                    value = 'Error retrieving value'
-            if value is None:
-                value = ''
-            values.append(value)
-        writer.writerow(values)
-    return response
-
-def export_csv(request):
-
-  data = database_to_csv(request, Medication.objects.all())
-  response = HttpResponse(data, content_type='text/csv')
-  return response
-
-  
+class CustomBrowsableAPIRenderer(BrowsableAPIRenderer):
+    def get_default_renderer(self, view):
+        return JSONRenderer()

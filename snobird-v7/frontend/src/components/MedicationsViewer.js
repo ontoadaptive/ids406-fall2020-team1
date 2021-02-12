@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DataTable, Button } from "carbon-components-react"
+import { DataTable } from "carbon-components-react"
 import {betaInstance, instance} from "../axios/";
 
 const {
@@ -64,12 +64,21 @@ const MedicationsViewer = () => {
     }
   ];
 
-  const batchActionClick = selectedRows => () =>
-    console.log(selectedRows.map(selection => (
-      selection.cells.map(cells => (
-        cells.value
-      ))
-    )));
+  const batchActionClick = selectedRows => () => 
+    // selectedRows.map(selection => (
+    //   selection.cells.map(cells => (
+    //     console.log(cells.id.charAt(0))
+    //   ))
+    // ))
+    betaInstance.get('/export/')
+    .then(response => {
+      const data = response.data;
+      console.log(data)
+    })
+    .catch(error => {
+      console.log("Error getting export file")
+    });
+  ;
 
   return (
     <>
