@@ -55,27 +55,24 @@ const MedicationForm = () => {
 
                 <FormGroup
                     invalid={false}
-                    legendText="Medication Name"
+                    legendText=""
                     message={false}
                 >
                 <TextInput
                     id="medication-name-input"
+                    labelText = "Medication Name"
                     invalid={false}
                     invalidText="A valid value is required"
                     light={true}
                     type="text"
+                    
                     value={name} 
                     onChange={e => setName(e.target.value)}
                 />
-                </FormGroup>
 
-                <FormGroup
-                    invalid={false}
-                    legendText="Dose"
-                    message={false}
-                >
                 <TextInput
                     id="medication-dose-input"
+                    labelText = "Dosage"
                     invalid={false}
                     invalidText="A valid value is required"
                     light={true}
@@ -83,70 +80,45 @@ const MedicationForm = () => {
                     value={dose}
                     onChange={e => setDose(e.target.value)}
                 />
-                </FormGroup>
-                
-                <FormGroup
-                    invalid={false}
-                    legendText="Days"
-                    message={false}
-                >
+
                 <TextInput
                     id="medication-days-input"
+                    labelText="Required Days"
                     invalid={false}
                     invalidText="A valid value is required"
-                    labelText=""
                     light={true}
                     type="text"
                     value={days}
                     onChange={e => setDays(e.target.value)}
                 />
-                </FormGroup>
 
-                <FormGroup
-                    invalid={false}
-                    legendText="Time"
-                    message={false}
-                >
                 <TextInput
                     id="medication-times-input"
+                    labelText="Timeframe for Administration"
                     invalid={false}
                     invalidText="A valid value is required"
-                    labelText=""
                     light={true}
                     type="text"
                     value={times}
                     onChange={e => setTimes(e.target.value)}
                 />
-                </FormGroup>
-
-
-                <FormGroup
-                    invalid={false}
-                    legendText="Amount"
-                    message={false}
-                >
+ 
                 <TextInput
                     id="medication-amount-input"
+                    labelText="Container Amount"
                     invalid={false}
                     invalidText="A valid value is required"
-                    labelText=""
                     light={true}
                     type="text"
                     value={amount}
                     onChange={e => setAmount(e.target.value)}
                 />
-                </FormGroup>
 
-                <FormGroup
-                    invalid={false}
-                    legendText="Patient Id"
-                    message={false}
-                >
                 <TextInput
                     id="patient-id-input"
+                    labelText="Patient ID"
                     invalid={false}
                     invalidText="A valid value is required"
-                    labelText=""
                     light={true}
                     type="text"
                     value={patientId}

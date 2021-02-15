@@ -4,7 +4,6 @@ import {FetchUserData} from "../services/";
 const Medications = () => {
     const activeUser = FetchUserData()
 
-    console.log("medication testing", activeUser.role);
     return (
         <>
             <MedicationsViewer />
