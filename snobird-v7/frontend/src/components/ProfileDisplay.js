@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button } from "carbon-components-react";
-import { FetchUserData } from "../services"
+import { FetchUserData } from "../services";
 
 const ProfilePage = () => {
     const activeUser = FetchUserData
@@ -15,7 +15,7 @@ const ProfilePage = () => {
     return (
         <>
             
-            <Button label onClick = {handleSubmit}>
+            <Button onclick = {handleSubmit}>
                 Logout
             </Button>
         </>

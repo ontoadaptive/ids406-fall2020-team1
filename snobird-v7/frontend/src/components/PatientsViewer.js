@@ -19,6 +19,7 @@ const PatientsViewer = () => {
     .then(response => {
       const data = response.data.concat()
       setPatientsData(data)
+ 
     })
     .catch(error => {
       console.log("Error getting patient data")

@@ -10,6 +10,8 @@ django = "*"
 jsonpath-ng = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+djangorestframework-csv = "*"
+django-import-export = "*"
 
 [requires]
 # python_version = "3.7.3"

@@ -1,2 +1,3 @@
-﻿id,datetime,type,value,unit,patient,type_cd
-11111,2014-11-03T12:41:12Z,blood-pressure,74/72,beats/min,mary,1
+﻿id,name,fileUri
+104,image4,gs://projectx/ep203/imaging/image4.png
+105,image5,gs://projectx/ep203/imaging/image5.png

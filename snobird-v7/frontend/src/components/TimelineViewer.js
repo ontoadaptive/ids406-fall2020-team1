@@ -17,7 +17,7 @@ const {
 
 const TimelineViewer = () => {
     const dispatch = useDispatch();
-    const observationstData = useSelector(getObservationsData);
+    const observationsData = useSelector(getObservationsData);
 
     const isFetching = useSelector(getObservationsIsFetching);
 
@@ -51,7 +51,7 @@ const TimelineViewer = () => {
         <div>
             <LoadingIndicator active={isFetching} />
             <DataTable
-                rows={observationstData}
+                rows={observationsData}
                 headers={headers}
                 render={({ rows, headers, getHeaderProps, getRowProps }) => (
                     <TableContainer title = "Timeline List">

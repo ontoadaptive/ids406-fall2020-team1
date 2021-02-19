@@ -18,7 +18,7 @@ const {
   TableBatchAction
 } = DataTable;
 
-const Beta = false;
+const Beta = true;
 const MedicationsViewer = () => {
   const [medicationsData, setMedicationsData] = useState([]);
 
@@ -63,23 +63,22 @@ const MedicationsViewer = () => {
       key: "amount"
     }
   ];
-
   const batchActionClick = selectedRows => () => 
-    // selectedRows.map(selection => (
-    //   selection.cells.map(cells => (
-    //     console.log(cells.id.charAt(0))
+
+    //   selectedRows.map(selection => (
+    //   selection.cells.map(cell => (
+    //     console.log(cell.id)
     //   ))
-    // ))
-    betaInstance.get('/export/')
+    // ));
+    betaInstance.post('/export/',[9,10])
     .then(response => {
-      const data = response.data;
-      console.log(data)
+      console.log(response.data)
     })
     .catch(error => {
       console.log("Error getting export file")
-    });
-  ;
-
+    })
+    ;
+  
   return (
     <>
       <DataTable

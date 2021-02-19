@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import Patient, Medication, Observation, Project, PatientOption
 
+from import_export import resources
+
 class ProjectAdmin(admin.ModelAdmin):
     name = ['name']
 
@@ -22,3 +24,9 @@ admin.site.register(Patient, PatientAdmin)
 admin.site.register(Medication, MedicationAdmin)
 admin.site.register(Observation, ObservationAdmin)
 admin.site.register(PatientOption, PatientOptionAdmin)
+
+'''import_export'''
+class MedicationResource(resources.ModelResource):
+
+    class Meta:
+        model = Medication

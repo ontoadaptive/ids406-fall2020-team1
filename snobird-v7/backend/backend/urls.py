@@ -25,10 +25,14 @@ router.register(r'observation', views.ObservationView, 'observation')
 router.register(r'project', views.ProjectView, 'project')
 router.register(r'patientoption', views.PatientOptionView, 'patientoption')
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/export/', views.ExportCSV.as_view(), name='export'),
-    path('exportjson/', views.ExportJSON.as_view(),name='exportjson'),
-    path('api/', include(router.urls))
-
+    path('api/export2/', views.export_csv, name='export2'),
+    path('api/', include(router.urls)),
+    path('api/accounts/register/', views.registration_view, name='register'),
+    # path('api/accounts/', views.user_view, name='users'),
+    # path('accounts/', include('django.contrib.auth.urls')),
+    # path('exportjson/', views.ExportJSON.as_view(),name='exportjson'),
 ]
