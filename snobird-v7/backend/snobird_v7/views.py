@@ -52,61 +52,30 @@ def registration_view(request):
         return Response(serializer.errors)
 
 
+''' using import_export plugin'''
+def export_csv3(request):
+    if request.method == "GET":
+        data = MedicationResource().export()
+        response = HttpResponse(data.csv, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="export.csv"'
+        return Response(data.csv)
+
+
 '''export and import functionality'''
 @api_view(['POST','GET'])
 # @renderer_classes([CSVRenderer])
-def export_csv(request):
+def export_csv2(request):
     if request.method == 'GET':
         medications = database_to_csv(request, Medication.objects.all())
         response = HttpResponse(medications, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="export.csv"'
         return response
-    # if request.method == "GET":
-    #     data = MedicationResource().export()
-    #     response = HttpResponse(data.csv, content_type='text/csv')
-    #     return Response(data.csv)
+
     if request.method == "POST":
         medications = database_to_csv(request, Medication.objects.filter(id__in=request.data))
         response = HttpResponse(medications, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="export.csv"'
         return response
 
-class ExportCSV(APIView):
-    
-    renderer_classes = (r.CSVRenderer, ) + tuple(api_settings.DEFAULT_RENDERER_CLASSES)
-    
-    def get(self, request):
-        if request.method == 'GET':
-            medications = database_to_csv(request, Medication.objects.all())
-            response = HttpResponse(medications, content_type='text/csv')
-            return response
-            '''CMS'''
-            # data = MedicationResource().export()
-            # response = HttpResponse(data.csv, content_type='text/csv')
-            # return Response(data.csv)
 
-    def post(self, request):
-        if request.method == 'POST':
-            medications = database_to_csv(request, Medication.objects.filter(id__in=request.data))
-            # response = HttpResponse(data, content_type='text/csv')
-            # medications = Medication.objects.filter(pk__in=request.data)
-            response = HttpResponse(medications, content_type='text/csv')
-            return response
-
-    @classmethod
-    def get_extra_actions(cls):
-        return []
-
-# class ExportJSON(APIView):
-#     renderer_classes = [JSONRenderer]
-
-#     def get(self, request, format = None):
-#         queryset = PatientOption.objects.all().values('patient_option_details')
-#         return Response(queryset)
-
-#     @classmethod
-#     def get_extra_actions(cls):
-#         return []
-
-# class CustomBrowsableAPIRenderer(BrowsableAPIRenderer):
-#     def get_default_renderer(self, view):
-#         return JSONRenderer()
 

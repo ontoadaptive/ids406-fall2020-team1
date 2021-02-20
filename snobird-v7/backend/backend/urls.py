@@ -28,11 +28,9 @@ router.register(r'patientoption', views.PatientOptionView, 'patientoption')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/export/', views.ExportCSV.as_view(), name='export'),
-    path('api/export2/', views.export_csv, name='export2'),
+    path('api/export2/', views.export_csv2, name='export2'),
+    path('api/export3/', views.export_csv2, name='export3'),
     path('api/', include(router.urls)),
     path('api/accounts/register/', views.registration_view, name='register'),
-    # path('api/accounts/', views.user_view, name='users'),
-    # path('accounts/', include('django.contrib.auth.urls')),
-    # path('exportjson/', views.ExportJSON.as_view(),name='exportjson'),
+
 ]

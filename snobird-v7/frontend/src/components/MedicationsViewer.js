@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataTable } from "carbon-components-react"
 import {betaInstance, instance} from "../axios/";
-
 const {
   TableContainer,
   Table,
@@ -63,21 +62,21 @@ const MedicationsViewer = () => {
       key: "amount"
     }
   ];
-  const batchActionClick = selectedRows => () => 
-
+  const batchActionClick = selectedRows => () => (
     //   selectedRows.map(selection => (
     //   selection.cells.map(cell => (
     //     console.log(cell.id)
     //   ))
     // ));
-    betaInstance.post('/export/',[9,10])
+    betaInstance.get('/export/')
     .then(response => {
-      console.log(response.data)
+      console.log('response', response.data)
+      window.location("127.0.0.1:8000/api/export")
     })
     .catch(error => {
       console.log("Error getting export file")
     })
-    ;
+  );
   
   return (
     <>
@@ -124,7 +123,6 @@ const MedicationsViewer = () => {
           </TableContainer>
         )}
       />   
-
     </>  
   );
 };
