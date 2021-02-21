@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import PatientSerializer, MedicationSerializer, ObservationSerializer, ProjectSerializer, PatientOptionSerializer, RegistrationSerializer
-from .models import Patient, Medication, Observation, Project, PatientOption
+from .models import Patient, Medication, Observation, Project, PatientOption, FilesAdmin
 
 from .utils import database_to_csv
 from django.http import HttpResponse
@@ -16,6 +16,9 @@ from rest_framework.decorators import api_view #functional based
 from rest_framework_csv.renderers import CSVRenderer
 
 from .admin import MedicationResource
+
+from django.conf import settings
+import os
 
 # Create your views here.
 class ProjectView(viewsets.ModelViewSet):
@@ -53,7 +56,7 @@ def registration_view(request):
 
 
 ''' using import_export plugin'''
-def export_csv3(request):
+def export_csv2(request):
     if request.method == "GET":
         data = MedicationResource().export()
         response = HttpResponse(data.csv, content_type='text/csv')
@@ -64,7 +67,7 @@ def export_csv3(request):
 '''export and import functionality'''
 @api_view(['POST','GET'])
 # @renderer_classes([CSVRenderer])
-def export_csv2(request):
+def export_csv(request):
     if request.method == 'GET':
         medications = database_to_csv(request, Medication.objects.all())
         response = HttpResponse(medications, content_type='text/csv')
@@ -77,5 +80,19 @@ def export_csv2(request):
         response['Content-Disposition'] = 'attachment; filename="export.csv"'
         return response
 
+
+def home(request):
+    context={'files':FilesAdmin.objects.all()}
+    return render(request, 'snobird_v7/home.html', context)
+
+def download(request,path):
+    file_path=os.path.join(settings.MEDIA_ROOT,path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/adminupload")
+            response['Content-Disposition'] = 'inline;filename='+os.path.basename(file_path)
+            return response
+    
+    raise Http404
 
 

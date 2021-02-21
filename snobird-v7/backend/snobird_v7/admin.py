@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Patient, Medication, Observation, Project, PatientOption
+from .models import Patient, Medication, Observation, Project, PatientOption, FilesAdmin
 
 from import_export import resources
 
@@ -24,6 +24,7 @@ admin.site.register(Patient, PatientAdmin)
 admin.site.register(Medication, MedicationAdmin)
 admin.site.register(Observation, ObservationAdmin)
 admin.site.register(PatientOption, PatientOptionAdmin)
+admin.site.register(FilesAdmin)
 
 '''import_export'''
 class MedicationResource(resources.ModelResource):

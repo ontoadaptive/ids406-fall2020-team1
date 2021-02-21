@@ -18,6 +18,11 @@ from django.urls import path, include
 from rest_framework import routers
 from snobird_v7 import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.static import serve
+from django.conf.urls import url
+
 router = routers.DefaultRouter()
 router.register(r'patient', views.PatientView, 'patient')
 router.register(r'medication', views.MedicationView, 'medication')
@@ -28,9 +33,15 @@ router.register(r'patientoption', views.PatientOptionView, 'patientoption')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/export2/', views.export_csv2, name='export2'),
-    path('api/export3/', views.export_csv2, name='export3'),
     path('api/', include(router.urls)),
+    path('api/export2/', views.export_csv, name='export2'),
+    path('api/export3/', views.export_csv2, name='export3'),
     path('api/accounts/register/', views.registration_view, name='register'),
-
+    path('', views.home),
+    url(r'^download/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]
+
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,7 @@
+id,patient,name,dose,days,times,amount
+5,Mary,Advil,325mg,,,60
+6,Mary,Advil,325mg,,,60
+7,Mary,Advil,325mg,,,60
+8,Mary,Advil,325mg,,,60
+9,Mary,new med,300,MWF,900,60
+10,Mary,test,325,mw,9,60
